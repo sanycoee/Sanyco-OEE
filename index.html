@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanyco Machining OEE</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f6f9;
+            margin: 0;
+        }
+        /* Style for the Sanyco Logo */
+        .logo {
+            height: 100px; /* Limits the logo height so it looks neat */
+            margin-bottom: 15px; /* Adds space between the logo and the title */
+            object-fit: contain; /* Keeps the logo proportions perfect */
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 30px;
+            margin-top: 0; /* Resets top margin so the layout spacing is even */
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        /* Button Colors */
+        .dashboard { background-color: #ff0000; }
+        .prs { background-color: #ea4335; }
+        .report { background-color: #1a73e8; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. The Company Logo (reads logo.png from the same folder) -->
+    <img src="logo.png" alt="Sanyco Logo" class="logo">
+
+    <h1>Sanyco Machining OEE</h1>
+    
+    <div class="button-container">
+        <a href="https://sanycoline6.sugidigital.org/dashboard/page19" target="_blank"><button class="dashboard">Dashboard</button></a>
+        <a href="https://docs.google.com/spreadsheets/d/1gmiY5IkWSxf8Vwvy0JHlZXTfpNNHZvEX8jrAvd1hdwc/edit?gid=265869353#gid=265869353" target="_blank"><button class="prs">PRS</button></a>
+        <a href="https://datastudio.google.com/reporting/2d2ec562-6da1-49bf-aaa2-6044cc73488a/page/page_12345" target="_blank"><button class="report">Report</button></a>
+    </div>
+
+</body>
+</html>
