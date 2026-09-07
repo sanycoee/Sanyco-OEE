@@ -21,6 +21,8 @@
     --steel-dim:#152531;
     --green:#4caf7d;
     --green-dim:#122a1f;
+    --purple:#9b51e0;
+    --purple-dim:#28153a;
   }
   *{box-sizing:border-box;}
   body{
@@ -37,6 +39,12 @@
     justify-content:center;
     padding:48px 24px;
   }
+  
+  /* Hides views that are not active */
+  .hidden {
+    display: none !important;
+  }
+
   .panel{
     position:relative;
     width:100%;
@@ -64,6 +72,7 @@
     align-items:center;
     gap:24px;
     margin-bottom:48px;
+    position: relative;
   }
   .logo{
     height:76px;
@@ -89,6 +98,28 @@
     letter-spacing:0.01em;
     color:var(--text);
   }
+  
+  /* Back Button Styling */
+  .back-btn {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s ease;
+  }
+  .back-btn:hover {
+    color: var(--text);
+  }
+
   .controls{
     display:flex;
     flex-direction:column;
@@ -105,6 +136,7 @@
     text-decoration:none;
     color:var(--text);
     transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    cursor: pointer; /* Added for the home buttons */
   }
   .ctrl:hover{
     transform:translateX(4px);
@@ -136,9 +168,12 @@
     font-size:18px;
     color:var(--text-muted);
   }
+  
+  /* Colors for the buttons */
   .c-dashboard{ --accent:var(--amber); --accent-dim:var(--amber-dim); }
   .c-prs{ --accent:var(--steel); --accent-dim:var(--steel-dim); }
   .c-report{ --accent:var(--green); --accent-dim:var(--green-dim); }
+  .c-line1-btn{ --accent:var(--purple); --accent-dim:var(--purple-dim); }
 
   footer{
     margin-top:32px;
@@ -154,6 +189,7 @@
   @media (max-width:480px){
     .panel{ padding:40px 24px 32px; }
     h1{ font-size:32px; }
+    .back-btn { top: -25px; }
     .ctrl{ padding:20px 20px; gap:16px; }
     .ctrl .icon{ width:64px; height:64px; padding:10px; }
     .ctrl .label .name{ font-size:20px; }
@@ -164,30 +200,122 @@
 </head>
 <body>
 
-  <div class="panel corner-br">
+  <!-- ========================================== -->
+  <!-- PAGE 1: HOME PAGE (Select Line)            -->
+  <!-- ========================================== -->
+  <div id="view-home" class="panel corner-br">
     <header>
       <img src="logo.png" alt="Sanyco Machining logo" class="logo"
            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',textContent:'SANYCO'}))">
       <div class="titles">
-        <h1>Sanyco Machining OEE</h1>
+        <h1>Sanyco Machining</h1>
       </div>
     </header>
 
     <div class="controls">
-      <a class="ctrl c-dashboard" href="https://sanycoline6.sugidigital.org/dashboard/page19" target="_blank" rel="noopener">
+      <!-- Navigates to Line 1 -->
+      <div class="ctrl c-line1-btn" onclick="showView('view-line1')">
         <span class="icon">
-          <img src="logo2.png" alt="">
+          <img src="logo5.png" alt="Line 1" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'L1'}))">
         </span>
+        <span class="label">
+          <div class="name">Line 1</div>
+          <div class="desc">Enter Line 1 Portals</div>
+        </span>
+      </div>
+
+      <!-- Navigates to Line 6 -->
+      <div class="ctrl c-dashboard" onclick="showView('view-line6')">
+        <span class="icon">
+          <img src="logo6.png" alt="Line 6" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'L6'}))">
+        </span>
+        <span class="label">
+          <div class="name">Line 6</div>
+          <div class="desc">Enter Line 6 Portals</div>
+        </span>
+      </div>
+    </div>
+
+    <footer>
+      <span>Sanyco Machining</span>
+      <span>OEE System Gateway</span>
+    </footer>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 2: LINE 1 PAGE                        -->
+  <!-- ========================================== -->
+  <div id="view-line1" class="panel corner-br hidden">
+    <header>
+      <button class="back-btn" onclick="showView('view-home')">← Back to Home</button>
+      <img src="logo.png" alt="Sanyco Machining logo" class="logo"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',textContent:'SANYCO'}))">
+      <div class="titles">
+        <h1>Line 1 OEE</h1>
+      </div>
+    </header>
+
+    <div class="controls">
+      <!-- REPLACE WITH ACTUAL LINE 1 NODE-RED LINK -->
+      <a class="ctrl c-dashboard" href="http://100.89.4.23:1880/dashboard/page5" target="_blank" rel="noopener">
+        <span class="icon"><img src="logo2.png" alt=""></span>
         <span class="label">
           <div class="name">Live Dashboard</div>
           <div class="desc">Real-time OEE and machine status</div>
         </span>
       </a>
 
-      <a class="ctrl c-prs" href="https://docs.google.com/spreadsheets/d/1gmiY5IkWSxf8Vwvy0JHlZXTfpNNHZvEX8jrAvd1hdwc/edit?gid=265869353#gid=265869353" target="_blank" rel="noopener">
-        <span class="icon">
-          <img src="logo3.png" alt="">
+      <!-- REPLACE WITH ACTUAL LINE 1 GSHEET LINK -->
+      <a class="ctrl c-prs" href="https://docs.google.com/spreadsheets/d/1uBtwgKo_kcjuAEarvw5Z9YktWdgu-KYFQh60Sj83ST0/edit?gid=339300540#gid=339300540" target="_blank" rel="noopener">
+        <span class="icon"><img src="logo3.png" alt=""></span>
+        <span class="label">
+          <div class="name">Production Record Sheet</div>
+          <div class="desc">Data captured and shift entries</div>
         </span>
+      </a>
+
+      <!-- REPLACE WITH ACTUAL LINE 1 LOOKER LINK -->
+      <a class="ctrl c-report" href="https://datastudio.google.com/u/0/reporting/ba0189d5-361c-4bc9-9456-2aa03f9b815d/page/page_12345/edit" target="_blank" rel="noopener">
+        <span class="icon"><img src="logo4.png" alt=""></span>
+        <span class="label">
+          <div class="name">Analytics Report</div>
+          <div class="desc">Trends, graphs and summary</div>
+        </span>
+      </a>
+    </div>
+
+    <footer>
+      <span>Sanyco Machining</span>
+      <span>Line 1 monitoring</span>
+    </footer>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 3: LINE 6 PAGE                        -->
+  <!-- ========================================== -->
+  <div id="view-line6" class="panel corner-br hidden">
+    <header>
+      <button class="back-btn" onclick="showView('view-home')">← Back to Home</button>
+      <img src="logo.png" alt="Sanyco Machining logo" class="logo"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',textContent:'SANYCO'}))">
+      <div class="titles">
+        <h1>Line 6 OEE</h1>
+      </div>
+    </header>
+
+    <div class="controls">
+      <a class="ctrl c-dashboard" href="https://sanycoline6.sugidigital.org/dashboard/page19" target="_blank" rel="noopener">
+        <span class="icon"><img src="logo2.png" alt=""></span>
+        <span class="label">
+          <div class="name">Live Dashboard</div>
+          <div class="desc">Real-time OEE and machine status</div>
+        </span>
+      </a>
+
+      <a class="ctrl c-prs" href="https://docs.google.com/spreadsheets/d/1gmiY5IkWSxf8Vwvy0JHlZXTfpNNHZvEX8jrAvd1hdwc/edit?pli=1&gid=339300540#gid=339300540" target="_blank" rel="noopener">
+        <span class="icon"><img src="logo3.png" alt=""></span>
         <span class="label">
           <div class="name">Production Record Sheet</div>
           <div class="desc">Data captured and shift entries</div>
@@ -195,9 +323,7 @@
       </a>
 
       <a class="ctrl c-report" href="https://datastudio.google.com/reporting/2d2ec562-6da1-49bf-aaa2-6044cc73488a/page/page_12345" target="_blank" rel="noopener">
-        <span class="icon">
-          <img src="logo4.png" alt="">
-        </span>
+        <span class="icon"><img src="logo4.png" alt=""></span>
         <span class="label">
           <div class="name">Analytics Report</div>
           <div class="desc">Trends, graphs and summary</div>
@@ -210,6 +336,22 @@
       <span>Line 6 monitoring</span>
     </footer>
   </div>
+
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: Handles the page swapping      -->
+  <!-- ========================================== -->
+  <script>
+    function showView(viewId) {
+      // 1. Hide all views by adding the 'hidden' class
+      document.getElementById('view-home').classList.add('hidden');
+      document.getElementById('view-line1').classList.add('hidden');
+      document.getElementById('view-line6').classList.add('hidden');
+
+      // 2. Remove the 'hidden' class from the view we want to show
+      document.getElementById(viewId).classList.remove('hidden');
+    }
+  </script>
 
 </body>
 </html>
