@@ -23,6 +23,10 @@
     --green-dim:#122a1f;
     --purple:#9b51e0;
     --purple-dim:#28153a;
+    --cyan:#00bcd4;
+    --cyan-dim:#10333b;
+    --coral:#ff7043;
+    --coral-dim:#3d1f18;
   }
   *{box-sizing:border-box;}
   body{
@@ -136,7 +140,7 @@
     text-decoration:none;
     color:var(--text);
     transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-    cursor: pointer; /* Added for the home buttons */
+    cursor: pointer;
   }
   .ctrl:hover{
     transform:translateX(4px);
@@ -169,11 +173,12 @@
     color:var(--text-muted);
   }
   
-  /* Colors for the buttons */
   .c-dashboard{ --accent:var(--amber); --accent-dim:var(--amber-dim); }
   .c-prs{ --accent:var(--steel); --accent-dim:var(--steel-dim); }
   .c-report{ --accent:var(--green); --accent-dim:var(--green-dim); }
   .c-line1-btn{ --accent:var(--purple); --accent-dim:var(--purple-dim); }
+  .c-tv{ --accent:var(--cyan); --accent-dim:var(--cyan-dim); }
+  .c-manual{ --accent:var(--coral); --accent-dim:var(--coral-dim); }
 
   footer{
     margin-top:32px;
@@ -186,6 +191,7 @@
     display:flex;
     justify-content:space-between;
   }
+  
   @media (max-width:480px){
     .panel{ padding:40px 24px 32px; }
     h1{ font-size:32px; }
@@ -201,7 +207,7 @@
 <body>
 
   <!-- ========================================== -->
-  <!-- PAGE 1: HOME PAGE (Select Line)            -->
+  <!-- PAGE 1: HOME PAGE (Select Line / Resources) -->
   <!-- ========================================== -->
   <div id="view-home" class="panel corner-br">
     <header>
@@ -234,6 +240,28 @@
           <div class="desc">Enter Line 6 Portals</div>
         </span>
       </div>
+
+      <!-- Opens TV Guideline Document -->
+      <a class="ctrl c-tv" href="https://drive.google.com/file/d/1iQh-EHUSNaBNOL5BHmnvzoCuael9lSiO/view?usp=sharing" target="_blank" rel="noopener">
+        <span class="icon">
+          <img src="logo7.png" alt="TV Guideline" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'TV'}))">
+        </span>
+        <span class="label">
+          <div class="name">TV Guideline</div>
+          <div class="desc">Setup and display orientation guide</div>
+        </span>
+      </a>
+
+      <!-- Opens User Manual Document -->
+      <a class="ctrl c-manual" href="https://drive.google.com/file/d/1yIV088fnNNyxJW4QMmuHSBnfHXFjeUpD/view?usp=sharing" target="_blank" rel="noopener">
+        <span class="icon">
+          <img src="logo8.png" alt="User Manual" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'UM'}))">
+        </span>
+        <span class="label">
+          <div class="name">User Manual</div>
+          <div class="desc">System operation and user documentation</div>
+        </span>
+      </a>
     </div>
 
     <footer>
@@ -257,27 +285,24 @@
     </header>
 
     <div class="controls">
-      <!-- REPLACE WITH ACTUAL LINE 1 NODE-RED LINK -->
       <a class="ctrl c-dashboard" href="https://sanycoline1.sugidigital.org/dashboard/page5" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo2.png" alt=""></span>
+        <span class="icon"><img src="logo2.png" alt="Live Dashboard" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'DB'}))"></span>
         <span class="label">
           <div class="name">Live Dashboard</div>
           <div class="desc">Real-time OEE and machine status</div>
         </span>
       </a>
 
-      <!-- REPLACE WITH ACTUAL LINE 1 GSHEET LINK -->
       <a class="ctrl c-prs" href="https://docs.google.com/spreadsheets/d/1uBtwgKo_kcjuAEarvw5Z9YktWdgu-KYFQh60Sj83ST0/edit?gid=339300540#gid=339300540" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo3.png" alt=""></span>
+        <span class="icon"><img src="logo3.png" alt="Production Record Sheet" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'PRS'}))"></span>
         <span class="label">
           <div class="name">Production Record Sheet</div>
           <div class="desc">Data captured and shift entries</div>
         </span>
       </a>
 
-      <!-- REPLACE WITH ACTUAL LINE 1 LOOKER LINK -->
       <a class="ctrl c-report" href="https://datastudio.google.com/u/0/reporting/ba0189d5-361c-4bc9-9456-2aa03f9b815d/page/page_12345/edit" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo4.png" alt=""></span>
+        <span class="icon"><img src="logo4.png" alt="Analytics Report" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'REP'}))"></span>
         <span class="label">
           <div class="name">Analytics Report</div>
           <div class="desc">Trends, graphs and summary</div>
@@ -307,7 +332,7 @@
 
     <div class="controls">
       <a class="ctrl c-dashboard" href="https://sanycoline6.sugidigital.org/dashboard/page19" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo2.png" alt=""></span>
+        <span class="icon"><img src="logo2.png" alt="Live Dashboard" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'DB'}))"></span>
         <span class="label">
           <div class="name">Live Dashboard</div>
           <div class="desc">Real-time OEE and machine status</div>
@@ -315,7 +340,7 @@
       </a>
 
       <a class="ctrl c-prs" href="https://docs.google.com/spreadsheets/d/1gmiY5IkWSxf8Vwvy0JHlZXTfpNNHZvEX8jrAvd1hdwc/edit?pli=1&gid=339300540#gid=339300540" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo3.png" alt=""></span>
+        <span class="icon"><img src="logo3.png" alt="Production Record Sheet" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'PRS'}))"></span>
         <span class="label">
           <div class="name">Production Record Sheet</div>
           <div class="desc">Data captured and shift entries</div>
@@ -323,7 +348,7 @@
       </a>
 
       <a class="ctrl c-report" href="https://datastudio.google.com/reporting/2d2ec562-6da1-49bf-aaa2-6044cc73488a/page/page_12345" target="_blank" rel="noopener">
-        <span class="icon"><img src="logo4.png" alt=""></span>
+        <span class="icon"><img src="logo4.png" alt="Analytics Report" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',style:'border:none;',textContent:'REP'}))"></span>
         <span class="label">
           <div class="name">Analytics Report</div>
           <div class="desc">Trends, graphs and summary</div>
